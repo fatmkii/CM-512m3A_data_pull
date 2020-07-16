@@ -6,15 +6,16 @@ import time
 import csv
 import threading as th
 
-VERSION = '0.8beta'
-data_sheet = []  # 全部收集到的数据都写到这里，最后用于输出csv
-flag = False  # 是否在处于收集状态的记号，非收集=false，收集中=true
+VERSION = '0.83beta'
 info = 'CM-512m3A色差计 数据提取  ' + VERSION + '\r\n' + '2020年7月' + '\r\n' + '作者:fat  邮箱:47155837@qq.com' + '\r\n' + '欢迎交流意见'
 
 
 class window:
+    flag = False  # 是否在处于收集状态的记号，非收集=false，收集中=true
 
     def __init__(self):
+        self.Ser_read = ser_read(self)
+
         # 初始框的声明
         self.root = tk.Tk()
         self.root.title('CM-512m3A色差计 数据提取 ' + VERSION)
@@ -42,7 +43,7 @@ class window:
         fm1 = tk.Frame(self.root)
         self.button1 = tk.Button(fm1, text="开始", command=self.read_button_click, height=1, width=10, font=('微软雅黑', 12))
         self.button1.pack(side='left', padx=10, pady=5)
-        button2 = tk.Button(fm1, text="输出CSV", command=to_csv, height=1, width=10, font=('微软雅黑', 12))
+        button2 = tk.Button(fm1, text="输出CSV", command=self.Ser_read.to_csv, height=1, width=10, font=('微软雅黑', 12))
         button2.pack(side='left', padx=10, pady=5)
         button3 = tk.Button(fm1, text="退出", command=self.root_exit, height=1, width=10, font=('微软雅黑', 12))
         button3.pack(side='right', padx=10, pady=5)
@@ -79,23 +80,22 @@ class window:
         self.text.delete('1.0', 'end')
 
     def read_button_click(self):
-        global flag  # 是否在处于收集状态的记号，非收集=false，收集中=true，全局变量
-        if not flag:
-            flag = True
+        if not self.flag:
+            self.flag = True
             self.button1.configure(text='停止')
-            proc1 = th.Thread(target=ser_read)
+            proc1 = th.Thread(target=self.Ser_read.start)
             proc1.start()
-            proc2 = th.Thread(target=gif)
+            proc2 = th.Thread(target=self.Ser_read.gif)
             proc2.start()
         else:
             self.button1.configure(text='开始')
             self.set_label1('')
             self.set_label2('')
-            flag = False
+            self.Ser_read.stop()
+            self.flag = False
 
     def root_exit(self):
-        global flag
-        flag = False
+        self.Ser_read.stop()
         self.root.destroy()
 
     def set_label1(self, str):
@@ -132,75 +132,76 @@ class Ser(object):
         return response
 
 
-def frame_to_row(Frame):
-    # 将从色差计读取的8行数据，抽出有用的数据列为一行
-    Row = [Frame[1].split()[0]]  # 数据序号"NO.?"
-    for i in range(3, 6):  # i代表L/a/b行
-        for j in range(1, 4):  # j代表25/45/75
-            Row.append(Frame[i].split()[j])  # L/a/b值25/45/75数据
-    Row.append(Frame[6].splitlines()[0][1:-1].replace('.', '/'))  # 测量时间，[1:-1]为文本切片，去掉头尾的[]
-    return Row
+class ser_read:
+    flag = False  # 是否在处于收集状态的记号，非收集=false，收集中=true
+    data_sheet = []  # 全部收集到的数据都写到这里，最后用于输出csv
 
+    def __init__(self, window):
+        self.GUI = window
 
-def ser_read():
-    global flag  # 是否在处于收集状态的记号，非收集=false，收集中=true
-    global data_sheet  # 全部收集到的数据都写到这里，最后用于输出csv
+    def start(self):
+        self.flag = True
+        self.GUI.text_clear()# 清空文本框
+        # 在data_sheet中创建表头
+        self.data_sheet = [['', 'L25', 'L45', 'L75', 'a25', 'a45', 'a75', 'b25', 'b45', 'b75', '时间']]
+        # 在界面输入表头
+        self.GUI.text_insert(self.data_sheet[0])
 
-    # 清空文本框
-    GUI.text_clear()
-    # 在data_sheet中创建表头
-    data_sheet = [['', 'L25', 'L45', 'L75', 'a25', 'a45', 'a75', 'b25', 'b45', 'b75', '时间']]
-    # 在界面输入表头
-    GUI.text_insert(data_sheet[0])
-
-    if GUI.com_var.get() == 'auto':
-        port_list = list(serial.tools.list_ports.comports())
-        if len(port_list) == 0:
-            tk.messagebox.showerror('错误', '未能找到端口，请检查线路或尝试手动选择')
-            GUI.read_button_click()
-            return
+        if self.GUI.com_var.get() == 'auto':
+            port_list = list(serial.tools.list_ports.comports())
+            if len(port_list) == 0:
+                tk.messagebox.showerror('错误', '未能找到端口，请检查线路或尝试手动选择')
+                self.GUI.read_button_click()
+                return
+            else:
+                port = list(port_list[0])[0]
+                self.GUI.set_label1("正在使用端口:" + port)
+                COM = Ser(19200, port)
         else:
-            port = list(port_list[0])[0]
-            GUI.set_label1("正在使用端口:" + port)
+            port = self.GUI.com_var.get()
+            self.GUI.set_label1("正在使用端口:" + port)
             COM = Ser(19200, port)
-    else:
-        port = GUI.com_var.get()
-        GUI.set_label1("正在使用端口:" + port)
-        COM = Ser(19200, port)
 
-    while COM.port.is_open:
-        if COM.port.in_waiting > 50:  # 当待读取数据＞50字节时才读取，以提高稳定性
-            data_frame = []
-            for i in range(8):
-                data_frame.append(COM.read_cmd().decode('utf-8', "ignore"))
-                time.sleep(0.1)
-            data_row = frame_to_row(data_frame)
-            data_sheet.append(data_row)
-            GUI.text_insert(data_row)
-        if not flag:
-            break
-        time.sleep(0.1)
+        while COM.port.is_open:
+            if COM.port.in_waiting > 50:  # 当待读取数据＞50字节时才读取，以提高稳定性
+                data_frame = []
+                for i in range(8):
+                    data_frame.append(COM.read_cmd().decode('utf-8', "ignore"))
+                    time.sleep(0.1)
+                data_row = self.frame_to_row(data_frame)
+                self.data_sheet.append(data_row)
+                GUI.text_insert(data_row)
+            if not self.flag:
+                break
+            time.sleep(0.1)
 
+    def stop(self):
+        self.flag = False
 
-def to_csv():
-    global data_sheet
-    with open('./色差数据.csv', 'wt', newline='') as fout:
-        csvout = csv.writer(fout)
-        csvout.writerows(data_sheet)
-        tk.messagebox.showinfo('', '已保存CSV')
+    def frame_to_row(self, Frame):
+        # 将从色差计读取的8行数据，抽出有用的数据列为一行
+        Row = [Frame[1].split()[0]]  # 数据序号"NO.?"
+        for i in range(3, 6):  # i代表L/a/b行
+            for j in range(1, 4):  # j代表25/45/75
+                Row.append(Frame[i].split()[j])  # L/a/b值25/45/75数据
+        Row.append(Frame[6].splitlines()[0][1:-1].replace('.', '/'))  # 测量时间，[1:-1]为文本切片，去掉头尾的[]
+        return Row
 
+    def to_csv(self):
+        with open('./色差数据.csv', 'wt', newline='') as fout:
+            csvout = csv.writer(fout)
+            csvout.writerows(self.data_sheet)
+            tk.messagebox.showinfo('', '已保存CSV')
 
-def gif():
-    global flag
-    i = 0
-    while flag:
-        GUI.set_label2('正在通讯' + i * '…')
-        i = i + 1
-        if i == 7:
-            i = 0
-        time.sleep(0.5)
-
-    GUI.set_label2('')
+    def gif(self):
+        i = 0
+        while self.flag:
+            self.GUI.set_label2('正在通讯' + i * '…')
+            i = i + 1
+            if i == 7:
+                i = 0
+            time.sleep(0.5)
+        self.GUI.set_label2('')
 
 
 if __name__ == '__main__':
