@@ -85,8 +85,6 @@ class window:
             self.button1.configure(text='停止')
             proc1 = th.Thread(target=self.Ser_read.start)
             proc1.start()
-            proc2 = th.Thread(target=self.Ser_read.gif)
-            proc2.start()
         else:
             self.button1.configure(text='开始')
             self.set_label1('')
@@ -155,16 +153,17 @@ class ser_read:
                 return
             else:
                 port = list(port_list[0])[0]
-                self.GUI.set_label1("正在使用端口:" + port)
+                self.GUI.set_label1("使用端口:" + port)
                 COM = Ser(19200, port)
         else:
             port = self.GUI.com_var.get()
-            self.GUI.set_label1("正在使用端口:" + port)
+            self.GUI.set_label1("使用端口:" + port)
             COM = Ser(19200, port)
 
         while COM.port.is_open:
             if COM.port.in_waiting > 50:  # 当待读取数据＞50字节时才读取，以提高稳定性
                 data_frame = []
+                self.GUI.set_label2('正在接受数据')
                 for i in range(8):
                     data_frame.append(COM.read_cmd().decode('utf-8', "ignore"))
                     time.sleep(0.1)
@@ -173,12 +172,14 @@ class ser_read:
                 GUI.text_insert(data_row)
             if not self.flag:
                 break
+            self.gif()
             time.sleep(0.1)
 
     def stop(self):
         self.flag = False
 
-    def frame_to_row(self, Frame):
+    @staticmethod
+    def frame_to_row(Frame):
         # 将从色差计读取的8行数据，抽出有用的数据列为一行
         Row = [Frame[1].split()[0]]  # 数据序号"NO.?"
         for i in range(3, 6):  # i代表L/a/b行
@@ -194,14 +195,11 @@ class ser_read:
             tk.messagebox.showinfo('', '已保存CSV')
 
     def gif(self):
-        i = 0
-        while self.flag:
-            self.GUI.set_label2('正在通讯' + i * '…')
-            i = i + 1
-            if i == 7:
-                i = 0
-            time.sleep(0.5)
-        self.GUI.set_label2('')
+        if self.GUI.label2.cget('text') == '' or self.GUI.label2.cget('text') == '正在接受数据':
+            self.GUI.set_label2("正在通讯")
+        self.GUI.set_label2(self.GUI.label2.cget('text') + '…')
+        if len(self.GUI.label2.cget('text')) > 15:
+            self.GUI.set_label2("正在通讯")
 
 
 if __name__ == '__main__':

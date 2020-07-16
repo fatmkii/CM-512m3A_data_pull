@@ -8,6 +8,10 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
+    <list id="2cf43605-b7f6-417d-aea8-7d2b4032139f" name="v0.83beta" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,6 +19,39 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="MERGE" />
+  </component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/main.py">
+      <ranges>
+        <range start1="87" end1="89" start2="87" end2="87" changelist="26ac160d-25df-4183-ab93-1dedac25e7d8" />
+        <range start1="143" end1="144" start2="141" end2="142" changelist="2cf43605-b7f6-417d-aea8-7d2b4032139f" />
+        <range start1="157" end1="158" start2="155" end2="156" changelist="26ac160d-25df-4183-ab93-1dedac25e7d8" />
+        <range start1="161" end1="162" start2="159" end2="160" changelist="26ac160d-25df-4183-ab93-1dedac25e7d8" />
+        <range start1="167" end1="167" start2="165" end2="166" changelist="26ac160d-25df-4183-ab93-1dedac25e7d8" />
+        <range start1="175" end1="175" start2="174" end2="175" changelist="26ac160d-25df-4183-ab93-1dedac25e7d8" />
+        <range start1="180" end1="181" start2="180" end2="182" changelist="26ac160d-25df-4183-ab93-1dedac25e7d8" />
+        <range start1="196" end1="204" start2="197" end2="202" changelist="26ac160d-25df-4183-ab93-1dedac25e7d8" />
+        <range start1="207" end1="208" start2="205" end2="205" changelist="2cf43605-b7f6-417d-aea8-7d2b4032139f" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/.idea/workspace.xml">
+      <ranges>
+        <range start1="4" end1="7" start2="4" end2="4" changelist="2cf43605-b7f6-417d-aea8-7d2b4032139f" />
+        <range start1="8" end1="8" start2="5" end2="9" changelist="26ac160d-25df-4183-ab93-1dedac25e7d8" />
+        <range start1="17" end1="17" start2="18" end2="51" changelist="26ac160d-25df-4183-ab93-1dedac25e7d8" />
+        <range start1="75" end1="75" start2="109" end2="110" changelist="26ac160d-25df-4183-ab93-1dedac25e7d8" />
+        <range start1="80" end1="80" start2="115" end2="130" changelist="26ac160d-25df-4183-ab93-1dedac25e7d8" />
+        <range start1="94" end1="94" start2="144" end2="149" changelist="26ac160d-25df-4183-ab93-1dedac25e7d8" />
+        <range start1="100" end1="101" start2="155" end2="176" changelist="26ac160d-25df-4183-ab93-1dedac25e7d8" />
+        <range start1="103" end1="105" start2="178" end2="180" changelist="26ac160d-25df-4183-ab93-1dedac25e7d8" />
+        <range start1="107" end1="109" start2="182" end2="184" changelist="26ac160d-25df-4183-ab93-1dedac25e7d8" />
+        <range start1="111" end1="113" start2="186" end2="188" changelist="26ac160d-25df-4183-ab93-1dedac25e7d8" />
+        <range start1="115" end1="116" start2="190" end2="191" changelist="26ac160d-25df-4183-ab93-1dedac25e7d8" />
+        <range start1="124" end1="124" start2="199" end2="203" changelist="26ac160d-25df-4183-ab93-1dedac25e7d8" />
+        <range start1="128" end1="128" start2="207" end2="222" changelist="26ac160d-25df-4183-ab93-1dedac25e7d8" />
+      </ranges>
+    </file>
   </component>
   <component name="ProjectId" id="1ejEqxySinCDNQJhblAn6VapDeZ" />
   <component name="ProjectViewState">
@@ -73,11 +110,27 @@
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="26ac160d-25df-4183-ab93-1dedac25e7d8" name="默认更改列表" comment="" />
+      <changelist id="2cf43605-b7f6-417d-aea8-7d2b4032139f" name="v0.83beta" comment="" />
       <created>1594826797016</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1594826797016</updated>
     </task>
+    <task id="LOCAL-00001" summary="v0.83beta">
+      <created>1594910167136</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1594910167136</updated>
+    </task>
+    <task id="LOCAL-00002" summary="v0.83beta">
+      <created>1594910221805</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1594910221805</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -93,27 +146,52 @@
       </map>
     </option>
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="v0.83beta" />
+    <option name="LAST_COMMIT_MESSAGE" value="v0.83beta" />
+    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
+  </component>
   <component name="WindowStateProjectService">
     <state x="277" y="98" key="#Notifications" timestamp="1594901868811">
       <screen x="0" y="0" width="1368" height="872" />
     </state>
     <state x="277" y="98" key="#Notifications/0.0.1368.872@0.0.1368.872" timestamp="1594901868811" />
-    <state width="1348" height="227" key="GridCell.Tab.0.bottom" timestamp="1594910051215">
+    <state x="310" y="34" key="CommitChangelistDialog2" timestamp="1594910221250">
       <screen x="0" y="0" width="1368" height="872" />
     </state>
-    <state width="1348" height="227" key="GridCell.Tab.0.bottom/0.0.1368.872@0.0.1368.872" timestamp="1594910051215" />
-    <state width="1348" height="227" key="GridCell.Tab.0.center" timestamp="1594910051214">
+    <state x="310" y="34" key="CommitChangelistDialog2/0.0.1368.872@0.0.1368.872" timestamp="1594910221250" />
+    <state width="1348" height="227" key="GridCell.Tab.0.bottom" timestamp="1594917380074">
       <screen x="0" y="0" width="1368" height="872" />
     </state>
-    <state width="1348" height="227" key="GridCell.Tab.0.center/0.0.1368.872@0.0.1368.872" timestamp="1594910051214" />
-    <state width="1348" height="227" key="GridCell.Tab.0.left" timestamp="1594910051214">
+    <state width="1348" height="227" key="GridCell.Tab.0.bottom/0.0.1368.872@0.0.1368.872" timestamp="1594917380074" />
+    <state width="1348" height="227" key="GridCell.Tab.0.center" timestamp="1594917380074">
       <screen x="0" y="0" width="1368" height="872" />
     </state>
-    <state width="1348" height="227" key="GridCell.Tab.0.left/0.0.1368.872@0.0.1368.872" timestamp="1594910051214" />
-    <state width="1348" height="227" key="GridCell.Tab.0.right" timestamp="1594910051214">
+    <state width="1348" height="227" key="GridCell.Tab.0.center/0.0.1368.872@0.0.1368.872" timestamp="1594917380074" />
+    <state width="1348" height="227" key="GridCell.Tab.0.left" timestamp="1594917380074">
       <screen x="0" y="0" width="1368" height="872" />
     </state>
-    <state width="1348" height="227" key="GridCell.Tab.0.right/0.0.1368.872@0.0.1368.872" timestamp="1594910051214" />
+    <state width="1348" height="227" key="GridCell.Tab.0.left/0.0.1368.872@0.0.1368.872" timestamp="1594917380074" />
+    <state width="1348" height="227" key="GridCell.Tab.0.right" timestamp="1594917380074">
+      <screen x="0" y="0" width="1368" height="872" />
+    </state>
+    <state width="1348" height="227" key="GridCell.Tab.0.right/0.0.1368.872@0.0.1368.872" timestamp="1594917380074" />
+    <state width="1348" height="281" key="GridCell.Tab.1.bottom" timestamp="1594917237100">
+      <screen x="0" y="0" width="1368" height="872" />
+    </state>
+    <state width="1348" height="281" key="GridCell.Tab.1.bottom/0.0.1368.872@0.0.1368.872" timestamp="1594917237100" />
+    <state width="1348" height="281" key="GridCell.Tab.1.center" timestamp="1594917237099">
+      <screen x="0" y="0" width="1368" height="872" />
+    </state>
+    <state width="1348" height="281" key="GridCell.Tab.1.center/0.0.1368.872@0.0.1368.872" timestamp="1594917237099" />
+    <state width="1348" height="281" key="GridCell.Tab.1.left" timestamp="1594917237099">
+      <screen x="0" y="0" width="1368" height="872" />
+    </state>
+    <state width="1348" height="281" key="GridCell.Tab.1.left/0.0.1368.872@0.0.1368.872" timestamp="1594917237099" />
+    <state width="1348" height="281" key="GridCell.Tab.1.right" timestamp="1594917237099">
+      <screen x="0" y="0" width="1368" height="872" />
+    </state>
+    <state width="1348" height="281" key="GridCell.Tab.1.right/0.0.1368.872@0.0.1368.872" timestamp="1594917237099" />
     <state x="415" y="150" key="RollbackChangesDialog" timestamp="1594907176584">
       <screen x="0" y="0" width="1368" height="872" />
     </state>
@@ -122,9 +200,28 @@
       <screen x="0" y="0" width="1368" height="872" />
     </state>
     <state x="188" y="82" key="SettingsEditor/0.0.1368.872@0.0.1368.872" timestamp="1594902284751" />
+    <state x="540" y="358" key="VCS.ChangelistChooser" timestamp="1594910230929">
+      <screen x="0" y="0" width="1368" height="872" />
+    </state>
+    <state x="540" y="358" key="VCS.ChangelistChooser/0.0.1368.872@0.0.1368.872" timestamp="1594910230929" />
     <state x="396" y="265" key="com.intellij.ide.util.TipDialog" timestamp="1594902298053">
       <screen x="0" y="0" width="1368" height="872" />
     </state>
     <state x="396" y="265" key="com.intellij.ide.util.TipDialog/0.0.1368.872@0.0.1368.872" timestamp="1594902298053" />
+    <state x="482" y="355" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1594910888775">
+      <screen x="0" y="0" width="1368" height="872" />
+    </state>
+    <state x="482" y="355" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1368.872@0.0.1368.872" timestamp="1594910888775" />
+    <state x="343" y="91" width="670" height="676" key="search.everywhere.popup" timestamp="1594917332788">
+      <screen x="0" y="0" width="1368" height="872" />
+    </state>
+    <state x="343" y="91" width="670" height="676" key="search.everywhere.popup/0.0.1368.872@0.0.1368.872" timestamp="1594917332788" />
+  </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="PythonConfigurationType">
+        <watch expression="self.GUI.label2.cget('text') " language="Python" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>
